@@ -3,21 +3,10 @@ variable "data" {
   type        = map(any)
 }
 
-variable "destinations" {
-  description = "The destinations where the data must be written. At least one destination must be selected."
+variable "destination" {
+  description = "The destination where the data must be written"
   type = object({
-    aws_s3 = optional(object({
-      bucket_id   = string
-      object_path = string
-    }))
-
-    local = optional(object({
-      file_path = string
-    }))
+    bucket_id   = string
+    object_path = string
   })
-
-  validation {
-    error_message = "At least of destination must be selected"
-    condition     = var.destinations.aws_s3 != null || var.destinations.local != null
-  }
 }
