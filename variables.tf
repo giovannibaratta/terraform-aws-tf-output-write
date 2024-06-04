@@ -1,6 +1,6 @@
 variable "data" {
   description = "The content that must be JSON encoded and stored in the specified destinations"
-  type        = map(any)
+  type        = any
 }
 
 variable "destination" {
